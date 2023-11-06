@@ -22,9 +22,10 @@ public class SelenideRepositorySearch {
     @Test
     void successfulSearchTest() {
         open("/selenide/selenide");
-        $("#wiki-tab"). click();
-        $("#wiki-body").shouldHave(text("Soft assertions"));
-        $("#wiki-body").$(byText("Soft assertions")).click();
+        $("#wiki-tab").click();
+        $("#wiki-pages-filter").setValue("SoftAssertions");
+        $("#wiki-pages-box").shouldHave(text("SoftAssertions"));
+        $("#wiki-pages-box").$(byText("SoftAssertions")).click();
         $("#wiki-body").shouldHave(text("@ExtendWith({SoftAssertsExtension.class})\n" +
                 "class Tests {\n" +
                 "  @Test\n" +
@@ -36,7 +37,6 @@ public class SelenideRepositorySearch {
                 "    $(\"#second\").should(visible).click();\n" +
                 "  }\n" +
                 "}"));
-
 
     }
 }
